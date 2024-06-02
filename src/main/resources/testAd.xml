@@ -1,0 +1,9 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <bean id="panelUserServiceImpl" class="com.renpho.sphygmomanometer.service.impl.PanelUserServiceImpl"></bean>
+    <bean id="panelUserAddDTO" class="com.renpho.sphygmomanometer.dto.PanelUserAddDTO"></bean>
+    <bean class="com.renpho.sphygmomanometer.dto.query.PageQuery" id="pageQuery"></bean>
+    <bean class="com.renpho.sphygmomanometer.dto.query.MeasuringRecordListQuery" id="measuringRecordListQuery"></bean>
+
+</beans>
