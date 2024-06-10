@@ -7,6 +7,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationListener;
 import org.springframework.core.env.ConfigurableEnvironment;
 
+import javax.annotation.Nullable;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -77,7 +78,9 @@ public class TestA {
         private void finishRefresh() {
         }
 
-        private void finishBeanFactoryInitation(BeanFactory beanFactory) {
+        private void finishBeanFactoryInitation(DefaultListableBeanFactory beanFactory) {
+            // todo
+            beanFactory.preInstantiateSingletons();
         }
 
         private void onfresh() {
@@ -121,7 +124,9 @@ public class TestA {
             applicationListener.addAll(earlyApplicationListener);
         }
 
+        // do nothing
         private void initPropertiesSource() {
+            // todo
         }
 
         private ConfigurableEnvironment getEnvironment() {
@@ -130,18 +135,65 @@ public class TestA {
 
     }
 
+    class DefaultListableBeanFactory extends AbstractBeanFactory {
+
+        public void preInstantiateSingletons() {
+            String beanName = "";
+            doGetBean(beanName);
+        }
+
+        @Override
+        public void doCreateBean(String beanName) {
+
+        }
+    }
+
+    abstract class AbstractBeanFactory {
+        void doGetBean(String beanName) {
+            doCreateBean(beanName);
+        }
+
+        public abstract void doCreateBean(String beanName);
+
+
+        public void setSerializationId(String s) {
+        }
+    }
+
+    abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFactory {
+
+        @Override
+        public void doCreateBean(String beanName) {
+
+        }
+    }
 
     class AbstractRefreshableApplicationContext extends AbstractApplicationContext {
 
-        public  boolean hasBeanFactory = false;
+        public boolean hasBeanFactory = false;
+
+        @Nullable
+        private String[] configLocations;
         DefaultListableBeanFactory beanFactory;
+
         public AbstractRefreshableApplicationContext(ApplicationContext parent) {
             super(parent);
         }
 
+        public void setConfigLocations(String... locations) {
+            this.configLocations = new String[locations.length];
+            for (int i = 0; i < configLocations.length; i++) {
+                this.configLocations[i] = resolvePath(locations[i]);
+            }
+        }
+
+        private String resolvePath(String location) {
+            return null;
+        }
+
         @Override
         void refreshBeanFactory() {
-            if(hasBeanFactory) {
+            if (hasBeanFactory) {
                 destroyBeanFactory();
                 closeBeanFactory();
             }
@@ -154,7 +206,7 @@ public class TestA {
 
         }
 
-        private  void loadBeanDefinitions(DefaultListableBeanFactory beanFactory) {
+        private void loadBeanDefinitions(DefaultListableBeanFactory beanFactory) {
         }
 
         private void customizeBeanFactory(DefaultListableBeanFactory beanFactory) {
