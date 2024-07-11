@@ -2,7 +2,6 @@ package com.xuanhui.spring.until;
 
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
-import org.springframework.beans.factory.support.DefaultListableBeanFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationListener;
 import org.springframework.core.env.ConfigurableEnvironment;
@@ -21,7 +20,7 @@ public class TestA {
             refresh();
         }
 
-        private void setConfigLocations(String[] localcations) {
+        public void setConfigLocations(String[] localcations) {
         }
 
 
@@ -78,7 +77,7 @@ public class TestA {
         private void finishRefresh() {
         }
 
-        private void finishBeanFactoryInitation(DefaultListableBeanFactory beanFactory) {
+        private void finishBeanFactoryInitation(BeanFactory beanFactory) {
             // todo
             beanFactory.preInstantiateSingletons();
         }
