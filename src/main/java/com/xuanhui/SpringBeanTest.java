@@ -5,6 +5,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class SpringBeanTest {
     public static void main(String[] args) {
-        ApplicationContext ac = new ClassPathXmlApplicationContext("testAd.xml");
+        ApplicationContext ac = new ClassPathXmlApplicationContext("testAd-${USERNAME}.xml");
+
     }
 }

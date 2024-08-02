@@ -79,7 +79,7 @@ public class TestA {
 
         private void finishBeanFactoryInitation(BeanFactory beanFactory) {
             // todo
-            beanFactory.preInstantiateSingletons();
+            // beanFactory.preInstantiateSingletons();
         }
 
         private void onfresh() {
