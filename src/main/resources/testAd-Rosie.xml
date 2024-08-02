@@ -1,0 +1,8 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <bean id="panelUserServiceImpl" class="com.xuanhui.spring.service.PanelUserServiceImpl"></bean>
+    <bean id="pageQuery" class="com.xuanhui.spring.entity.PageQuery"></bean>
+    <bean class="com.xuanhui.spring.entity.MeasuringRecordListQuery" id="${fdsadasfefasf}"></bean>
+
+</beans>
